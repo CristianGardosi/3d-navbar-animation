@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 90px;
+    line-height: 90px;
+    color: #fff;
+}
+
+
+p {
+    font-size: 25px;
+    color: #fff;
+}
+
+.logo {
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.logo span {
+    font-weight: 400;
+}
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #485461;
+    background-image: linear-gradient(135deg, #485461, #3a5e67);
+    overflow-x: hidden;
+    transform-style: preserve-3d;
+}
+
+/* *****TOGGLE STYLING START***** */
+.container.active .bar {
+    transform: rotate(360deg);
+    background-color: transparent;
+}
+
+.container.active .bar:before {
+    transform: translateY(0) rotate(45deg);
+
+}
+
+.container.active .bar:after {
+    transform: translateY(0) rotate(-45deg);
+
+}
+
+.container.active .main {
+    animation: main-animation .5s ease;
+    transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(.5);
+    cursor: pointer;
+}
+
+.container.active .main:hover {
+    transform: perspective(1300px) rotateY(20deg) translateZ(340px) scale(.5);;
+}
+
+@keyframes main-animation {
+    from {
+        transform: translate(0);
+    }
+    to {
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(.5)
+    }
+}
+
+.container.active .links ul li a {
+    animation: appear-animation .5s forwards ease var(--i);
+}
+
+@keyframes appear-animation {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes hide {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+}
+
+.container.active .shadow.one {
+    transform: perspective(1300px) rotateY(20deg) translateZ(230px) scale(.5);
+    animation: shadow-one .6s ease-out;
+}
+
+@keyframes shadow-one {
+    0% {
+        transform: translate(0)
+    }
+
+    5% {
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(.5);
+    }
+
+    100% {
+        transform: perspective(1300px) rotateY(20deg) translateZ(230px) scale(.5);
+    }
+
+}
+
+.container.active .shadow.two {
+    transform: perspective(1300px) rotateY(20deg) translateZ(150px) scale(.5);
+    animation: shadow-two .6s ease-out;
+}
+
+@keyframes shadow-two {
+    0% {
+        transform: translate(0)
+    }
+
+    5% {
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(.5);
+    }
+
+    100% {
+        transform: perspective(1300px) rotateY(20deg) translateZ(150px) scale(.5);
+    }
+
+}
+/* *****TOGGLE STYLING END***** */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 30px;
+    color: #eee;
+
+}
+
+.hamburger {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.bar {
+    position: relative;
+    width: 50px;
+    height: 5px;
+    border-radius: 2px;
+    background: #eee;
+    transition: .4s;
+}
+
+.bar::before, 
+.bar::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background: #eee;
+    transition: .4s;
+}
+
+.bar::before {
+    transform: translateY(-15px)
+}
+
+.bar::after {
+    transform: translateY(15px)
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    left: 0;
+    z-index: 5;
+    background: white;
+    overflow: hidden;
+    transform-origin: left; 
+    transform-style: preserve-3d;
+    transition: .5s;
+}
+
+header {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background: url('../img/jumbo.png') no-repeat center center / cover;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(43, 51, 59, .5);
+}
+
+.inner {
+    max-width: 900px;
+    text-align: center;
+}
+
+.inner p {
+    padding: 50px 0;
+}
+
+.btn {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 100px;
+    padding: 20px 40px;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: .2s;
+
+}
+
+.btn:hover {
+    background: rgba(43, 51, 59, .8);
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 30%;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 1;
+}
+
+.links ul {
+    list-style: none;
+}
+
+.links ul li {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.links ul li a {
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #eee;
+    transition: .2s;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: hide .5s forwards ease;
+}
+
+.links ul li a:hover {
+    color: #fff;
+}
+
+.shadow {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: .5s;
+}
+
+.shadow.one {
+    z-index: -1;
+    background: #fff;
+    opacity: .15;
+}
+
+.shadow.two {
+    z-index: -2;
+    background: #fff;
+    opacity: .1;
+}
